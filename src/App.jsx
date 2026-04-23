@@ -1,113 +1,150 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+
+import tigoriCover from './assets/tigori-cover.jpg';
+import sparkCover from './assets/spark-cover.png';
+import finnishCover from './assets/finnish-cover.png';
 import tigoriLogo from './assets/tigori-logo.png';
+import tigoriPhone from './assets/tigori-phone.png';
 
 const projectData = {
   tigori: {
     slug: 'tigori',
     kind: 'Mobile product case',
     title: 'TIGORI',
-    subtitle: 'Motivation and wellbeing support for youth team sports.',
-    summary:
-      'A product case built around youth team sports motivation, lightweight check-ins, and better coach visibility into wellbeing patterns.',
-    cardDescription:
-      'A thesis-driven product case focused on motivation, wellbeing, and product decisions for youth team sports.',
-    imageType: 'logo',
+    subtitle:
+      'A coach-centered wellbeing monitoring concept for youth team sports.',
+    coverImage: tigoriCover,
+    coverAlt: 'TIGORI project preview',
+    panelColor: '#edf5f7',
     logo: tigoriLogo,
+    imageType: 'logo',
     links: {
       read: '#/project/tigori',
       demo: 'https://player.vimeo.com/video/1182267883',
-      demoLabel: 'View live app demo',
+      demoLabel: 'Live demo',
       embedUrl: '',
     },
     quickFacts: {
       timeline: 'Bachelor’s thesis case',
-      users: 'Youth athletes + coaches',
+      users: 'Youth coaches + players',
       scope: 'MVP',
       role: 'Product + UX + implementation',
     },
     details: {
       overview:
-        'TIGORI was explored through my bachelor’s thesis as a mobile product concept for youth team sports. The idea focused on supporting motivation and self-reflection for players while also helping coaches notice wellbeing-related signals earlier.',
+        'TIGORI was developed through my bachelor’s thesis as a mobile product concept for youth ice hockey. The core idea was to support a coach-facing monitoring need: helping coaches notice patterns in player wellbeing that may influence motivation, readiness, and everyday training decisions. At the same time, the player-side experience was designed to stay lightweight, understandable, and low-pressure.',
       problem:
-        'Young athletes do not always openly communicate how they feel, and coaches often need better visibility into what may be behind behaviour, energy, or motivation changes. The challenge was to create a lightweight and realistic interaction, not another heavy tracking tool.',
+        'Youth coaches do not always have clear visibility into what may be happening behind a player’s behaviour in training. A player may seem tired, passive, or less motivated, while the underlying reasons may relate to poor sleep, low energy, stress, or issues outside sport. The challenge was to design a realistic way to surface these signals earlier without turning reporting into another burden for young players.',
       users:
-        'Primary users were youth athletes in team sports. Secondary users were coaches who needed simple, useful visibility into team wellbeing patterns.',
-      role: 'Product concept, MVP definition, feature prioritization, UX/UI design, frontend and backend implementation, and pilot-based reflection.',
+        'The product addressed a coach-centered problem, but relied on two connected user roles. Coaches were the primary beneficiaries because they needed clearer team-level visibility into wellbeing indicators linked to motivation. Players were the main day-to-day interaction users, since the system depended on short self-reported check-ins and a lightweight engagement flow designed for adolescents.',
+      role: 'Product concept, discovery synthesis, MVP definition, feature prioritisation, UX/UI design, frontend and backend implementation, and pilot-based evaluation.',
       decisions: [
-        'Kept the core interaction lightweight so the product would feel realistic in everyday sports routines.',
-        'Designed different value for players and coaches instead of treating them as one user group.',
-        'Used gamification as a supporting layer rather than the entire reason to use the product.',
-        'Focused the MVP on one context first instead of trying to solve every sports use case at once.',
+        'Framed the MVP around a coach-facing monitoring problem rather than a generic athlete tracking tool.',
+        'Kept the player check-in flow short and low-effort so repeated use would feel realistic for adolescents.',
+        'Selected sleep quality, stress or school load, and energy level as the core indicators based on coach research findings.',
+        'Used gamification as a supporting engagement layer rather than the main source of product value.',
       ],
+      pilot: {
+        title: 'Pilot and outcome',
+        text: 'The product was tested in a two-week pilot with one youth ice hockey team. 8 players and 1 coach participated. During the pilot, 61 check-ins were submitted, which suggested repeated use rather than one-time testing.',
+        signals: [
+          '2-week pilot with 1 youth ice hockey team',
+          '8 players and 1 coach participated',
+          '61 total check-ins were submitted',
+          'All 8 players completed onboarding and avatar progression basics',
+          'Coach feedback was positive and no major technical problems were identified',
+        ],
+      },
       learnings:
-        'The most important insight was that simplicity mattered more than feature richness. A youth-focused product needed low-friction interaction, clear purpose, and a careful balance between motivation and usability.',
+        'The strongest takeaway was that the product needed to balance two perspectives at once: practical value for coaches and low-friction interaction for players. The case confirmed that simplicity was more important than feature richness, and that a coach-centered product in youth sports still depends heavily on age-appropriate player UX.',
+      note: '',
     },
   },
 
-  hinge: {
-    slug: 'hinge',
+  spark: {
+    slug: 'spark',
     kind: 'Research case',
-    title: 'Exploratory research with Hinge users',
-    subtitle:
-      'An independent qualitative research exercise focused on dating app behaviour, unmet needs, and product friction.',
-    summary:
-      'An exploratory research case based on direct outreach to Hinge users. I asked the same three open-ended questions to understand what users find frustrating, what features they wish existed, and whether dating apps reflect what they are actually looking for.',
-    cardDescription:
-      'A qualitative research case based on direct user outreach, theme clustering, and product-oriented insight synthesis.',
-    imageType: 'gradient',
-    gradient: 'bg-[linear-gradient(135deg,#111827_0%,#7A72B8_100%)]',
-    badge: 'Research',
+    title: 'SPARK',
+    subtitle: 'A clearer dating experience shaped by user research.',
+    coverImage: sparkCover,
+    coverAlt: 'Spark concept preview',
+    panelColor: '#ebebeb',
     links: {
-      read: '#/project/hinge',
+      read: '#/project/spark',
+      demo: 'https://tanstack-start-app.vmekza-spark-app.workers.dev/',
+      demoLabel: 'Open interactive prototype',
       embedUrl: '',
     },
     quickFacts: {
-      timeline: 'Independent research work',
-      users: '43 respondents',
-      scope: '3 open-ended questions',
-      role: 'Research + synthesis',
+      timeline: 'Independent case study',
+      users: '43 Hinge users',
+      scope: 'Discovery → concept',
+      role: 'Research + synthesis + product concept',
     },
     details: {
       overview:
-        'This project was an independent qualitative research exercise based on direct outreach to Hinge users through my personal account. I asked the same three questions in order to understand what users dislike, what features they wish existed, and whether dating apps actually reflect what they are looking for.',
+        'This was an independent qualitative research case based on direct outreach to Hinge users through my personal account. The goal was to understand what users found frustrating, what they felt was missing, and where the product experience created friction.',
       problem:
-        'Dating apps may appear simple on the surface, but user frustration often builds around unclear matching logic, limited interaction tools, pricing pressure, and weak signals of real compatibility. I wanted to explore these frustrations through direct user responses rather than assumptions.',
+        'Dating apps often optimise for quick interaction, but that can leave users with limited control, shallow compatibility signals, and low trust in the overall experience. I wanted to explore those tensions through direct user feedback and turn them into clearer product opportunities.',
       users:
-        'The research included 43 male respondents between approximately 32 and 57 years old across multiple countries and cities. Since this was exploratory outreach through a personal account, I treat the findings as directional qualitative insight rather than a representative study.',
-      role: 'Research design, question framing, direct outreach, response review, theme clustering, and insight synthesis.',
+        'The research included 43 male respondents between approximately 32 and 57 years old across multiple countries and cities. Because the outreach was conducted independently through a personal account, the findings should be understood as directional qualitative insight rather than representative market research.',
+      role: 'Research design, question framing, direct outreach, response review, theme clustering, insight synthesis, and translation of findings into a clickable product concept.',
+      recruiterSnapshot: {
+        challenge:
+          'Users often describe dating app frustration in broad terms, but those complaints do not automatically translate into useful product direction. I wanted to identify repeated patterns and turn them into feature opportunities.',
+        outcome:
+          'I synthesised 43 open-ended responses into three clear product signals and used them to shape a clickable concept focused on missing user-facing features.',
+        contribution: [
+          'Designed a lightweight qualitative research prompt using the same three open-ended questions for every respondent.',
+          'Collected and reviewed direct responses from Hinge users.',
+          'Clustered recurring frustrations into product-relevant insight themes.',
+          'Translated the strongest findings into a prototype-ready feature concept.',
+        ],
+        relevance: [
+          'Shows how I move from raw user input to structured product thinking.',
+          'Demonstrates prioritisation based on repeated user pain points rather than assumptions.',
+          'Makes my research and concept process easy for recruiters to scan quickly.',
+        ],
+      },
       decisions: [
-        'Used the same three open-ended questions for every respondent to keep the answers comparable.',
-        'Focused on qualitative input instead of forcing respondents into predefined answer options.',
-        'Grouped raw responses into recurring themes in order to translate them into product-relevant insight.',
-        'Treated the work as exploratory discovery, not as formal market research or statistically representative evidence.',
+        'Used the same three open-ended questions for every respondent to keep responses comparable.',
+        'Focused on qualitative depth instead of predefined answer choices.',
+        'Clustered repeated frustrations into themes before moving into concept direction.',
+        'Treated the case as exploratory product discovery, not formal market research.',
       ],
       themes: [
         {
-          title: 'Messenger limitations',
-          text: 'Users wanted richer interaction tools such as sharing multiple photos, easier video-call initiation, editing messages, and better ways to revisit earlier profiles or chats.',
+          title: 'Limited communication after matching',
+          text: 'Users wanted richer and more natural ways to interact after matching, rather than feeling restricted by a narrow messaging experience.',
         },
         {
-          title: 'Filtering and paywalls',
-          text: 'Respondents wanted more filtering options without being pushed toward paid plans for what they considered basic refinement and search control.',
+          title: 'Weak compatibility signals',
+          text: 'Many users wanted stronger profile depth and better cues for compatibility beyond appearance alone.',
         },
         {
-          title: 'Profile depth and compatibility',
-          text: 'Many users wanted more meaningful profile fields, prompts, quizzes, or other ways to surface deeper compatibility beyond appearance.',
+          title: 'Low control and trust',
+          text: 'Respondents described frustration around filtering, discovery, paywalls, and uncertainty about how matching works.',
+        },
+      ],
+      opportunities: [
+        {
+          title: 'Richer post-match interaction',
+          text: 'The concept explored ways to make conversations feel more natural and less limited once a match happens.',
         },
         {
-          title: 'Algorithm transparency',
-          text: 'Some respondents did not trust how matching worked and felt that appearance was prioritised over more meaningful factors.',
+          title: 'Stronger compatibility cues',
+          text: 'The prototype focused on helping users assess fit through more meaningful profile depth and compatibility-oriented signals.',
         },
         {
-          title: 'UI and usability friction',
-          text: 'There were comments about hidden actions, difficult controls, and a general expectation that core features like location and notifications should work more intuitively.',
+          title: 'Greater user control',
+          text: 'The feature direction responded to frustration around filtering, discovery, and the feeling of being constrained by the product.',
         },
       ],
       learnings:
-        'This project strengthened my ability to identify patterns in unstructured responses and translate them into product insight. The strongest signals pointed to low trust in matching logic, frustration with communication limitations, and a desire for deeper compatibility cues.',
-      note: 'This was an independent exploratory research exercise conducted through direct outreach from a personal account. It should be understood as qualitative discovery work, not formal academic or market research.',
+        'This case strengthened my ability to turn messy qualitative input into clearer product direction. The strongest takeaway was that users were not only asking for more features — they were asking for more control, better signals, and a more trustworthy experience.',
+      note: 'This was an independent exploratory research and concept case. It was not conducted in collaboration with Hinge and should be understood as qualitative discovery work.',
     },
   },
 
@@ -120,9 +157,9 @@ const projectData = {
       'A planned case around learning conversational Finnish more naturally and with better real-life relevance.',
     cardDescription:
       'An upcoming language-learning product case that I plan to add later.',
-    imageType: 'gradient',
-    gradient: 'bg-[linear-gradient(135deg,#B6E3E6_0%,#f3f2f2_100%)]',
-    badge: 'Coming later',
+    coverImage: finnishCover,
+    coverAlt: 'Conversational Finnish app preview',
+    panelColor: '#edf6f4',
     links: {
       read: '#/project/finnish',
       embedUrl: '',
@@ -148,13 +185,15 @@ const projectData = {
   },
 };
 
-const projectOrder = ['tigori', 'hinge', 'finnish'];
+const projectOrder = ['tigori', 'spark'];
 
 function getCurrentRoute() {
   const hash = window.location.hash.replace(/^#/, '');
+
   if (hash.startsWith('/project/')) {
     return { type: 'project', slug: hash.replace('/project/', '') };
   }
+
   return { type: 'home' };
 }
 
@@ -177,12 +216,18 @@ function SectionHeading({ eyebrow, title, text }) {
         <Sparkles className='h-3.5 w-3.5' />
         {eyebrow}
       </div>
-      <h2 className='text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl'>
-        {title}
-      </h2>
-      <p className='mt-4 text-base leading-7 text-neutral-600 md:text-lg'>
-        {text}
-      </p>
+
+      {title ? (
+        <h2 className='text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl'>
+          {title}
+        </h2>
+      ) : null}
+
+      {text ? (
+        <p className='mt-4 text-base leading-7 text-neutral-600 md:text-lg'>
+          {text}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -200,9 +245,45 @@ function FloatingOrb({ className, style }) {
 }
 
 function ProjectVisual({ project }) {
-  if (project.imageType === 'logo') {
+  if (project.coverImage) {
+    const isSpark = project.slug === 'spark';
+
     return (
-      <div className='flex h-full min-h-[280px] items-center justify-center rounded-[28px] border border-black/8 bg-[#f3f2f2] p-8'>
+      <div
+        className={`relative h-full min-h-[320px] overflow-hidden ${
+          isSpark ? 'bg-[#FAF9F6]' : 'bg-neutral-200'
+        }`}
+      >
+        <div
+          className={`flex h-full w-full items-center justify-center ${
+            isSpark ? 'p-8' : ''
+          }`}
+        >
+          <img
+            src={project.coverImage}
+            alt={project.coverAlt || project.title}
+            className={
+              isSpark
+                ? 'max-h-[320px] w-auto object-contain'
+                : 'h-full w-full object-cover'
+            }
+          />
+        </div>
+
+        {project.slug === 'tigori' && (
+          <img
+            src={tigoriPhone}
+            alt='TIGORI phone preview'
+            className='absolute bottom-10 right-10 z-10 w-[100px] md:w-[110px] lg:w-[100px] drop-shadow-2xl'
+          />
+        )}
+      </div>
+    );
+  }
+
+  if (project.imageType === 'logo' && project.logo) {
+    return (
+      <div className='flex h-full min-h-[320px] items-center justify-center bg-[#f3f2f2] p-8'>
         <img
           src={project.logo}
           alt={`${project.title} logo`}
@@ -213,79 +294,51 @@ function ProjectVisual({ project }) {
   }
 
   return (
-    <div
-      className={`flex h-full min-h-[280px] items-end rounded-[28px] border border-black/8 p-6 text-white ${project.gradient}`}
-    >
-      <div>
-        <div className='mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/85'>
-          {project.badge}
-        </div>
-
-        <p className='max-w-xs text-sm leading-6 text-white/85'>
-          {project.subtitle}
-        </p>
-
-        {project.slug === 'hinge' && (
-          <div className='mt-5 flex flex-wrap gap-2'>
-            <span className='rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/85'>
-              43 respondents
-            </span>
-            <span className='rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/85'>
-              3 questions
-            </span>
-            <span className='rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/85'>
-              Qualitative
-            </span>
-          </div>
-        )}
-      </div>
+    <div className='flex h-full min-h-[320px] items-center justify-center bg-[#f3f2f2] p-8'>
+      <span className='text-lg text-neutral-500'>{project.title}</span>
     </div>
   );
 }
 
 function ProjectCard({ project }) {
   return (
-    <div className='grid gap-6 rounded-[34px] border border-white/60 bg-white/72 p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr] lg:p-7'>
-      <ProjectVisual project={project} />
+    <article className='overflow-hidden rounded-[22px] border border-white/60 bg-white/80 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl'>
+      <div className='flex h-full flex-col'>
+        <div className='h-[260px]'>
+          <ProjectVisual project={project} />
+        </div>
 
-      <div className='flex flex-col justify-between'>
-        <div>
-          <div className='mb-4 inline-flex rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-600'>
+        <div
+          className='flex flex-1 flex-col px-8 py-8'
+          style={{ backgroundColor: project.panelColor || '#eef4f6' }}
+        >
+          <p className='text-[12px] font-medium uppercase tracking-[0.22em] text-neutral-500'>
             {project.kind}
-          </div>
+          </p>
 
-          <h3 className='text-3xl font-semibold tracking-tight text-neutral-950'>
+          <h3 className='mt-9 text-2xl font-semibold tracking-tight text-neutral-950 md:text-3xl'>
             {project.title}
           </h3>
 
-          <p className='mt-3 max-w-2xl text-base leading-7 text-neutral-600'>
+          <p className='mt-2 text-base leading-7 text-neutral-800'>
+            {project.subtitle}
+          </p>
+
+          <p className='mt-3 text-sm leading-6 text-neutral-600'>
             {project.cardDescription}
           </p>
-        </div>
 
-        <div className='mt-8 flex flex-wrap gap-3'>
-          <a
-            href={project.links.read}
-            className='inline-flex items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:translate-y-[-1px]'
-          >
-            Read more
-            <ArrowRight className='h-4 w-4' />
-          </a>
-
-          {project.links.demo && (
+          <div className='mt-auto pt-6'>
             <a
-              href={project.links.demo}
-              target='_blank'
-              rel='noreferrer'
-              className='inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors duration-300 hover:bg-[#7A72B8] hover:text-white'
+              href={project.links.read}
+              className='inline-flex items-center justify-center rounded-lg border-[2px] border-neutral-950 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-neutral-950 transition hover:bg-neutral-950 hover:text-white'
             >
-              {project.links.demoLabel || 'View live demo'}
-              <ExternalLink className='h-4 w-4' />
+              Learn more
             </a>
-          )}
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -302,25 +355,18 @@ function HomePage() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className='text-left'
         >
-          <h1 className='max-w-5xl text-5xl font-semibold leading-[0.95] tracking-tight text-neutral-950 md:text-7xl'>
-            Building thoughtful digital products through empathy and clarity.
+          <h1 className='max-w-4xl text-4xl font-semibold leading-[0.95] tracking-tight text-neutral-950 md:text-5xl'>
+            Hello, my name is Ekaterina.
           </h1>
-
-          <p className='mt-7 max-w-2xl text-lg leading-8 text-neutral-600 md:text-xl'>
-            Hello, I’m Ekaterina. I combine a software engineering background
-            with a strong interest in HCI and UX.
-          </p>
+          <h2 className='max-w-4xl text-4xl leading-[1] tracking-tight text-neutral-950 md:text-3xl'>
+            <br />I love combining technology, user experience, and product
+            thinking.
+          </h2>
         </motion.div>
       </section>
 
-      <section id='projects' className='mx-auto max-w-6xl py-6'>
-        <SectionHeading
-          eyebrow='Selected work'
-          title='Projects and research cases'
-          text='A growing portfolio of product work, research thinking, and case-based problem solving. Each project opens into its own detailed page.'
-        />
-
-        <div className='mt-10 space-y-8'>
+      <section id='projects' className='mx-auto max-w-6xl py-4'>
+        <div className='mt-10 grid gap-8 md:grid-cols-2'>
           {projectOrder.map((slug) => (
             <ProjectCard key={slug} project={projectData[slug]} />
           ))}
@@ -366,80 +412,45 @@ function DetailBlock({ label, children }) {
   );
 }
 
-function QuickFact({ label, value }) {
+function BulletList({ items }) {
   return (
-    <div className='min-h-[124px] rounded-[22px] border border-black/6 bg-white/85 p-4'>
-      <p className='text-[11px] uppercase tracking-[0.18em] text-neutral-500'>
-        {label}
-      </p>
-      <p className='mt-2 text-sm font-medium text-neutral-900'>{value}</p>
+    <ul className='space-y-3'>
+      {items.map((item) => (
+        <li key={item} className='flex gap-3'>
+          <span className='mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-950' />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function MetaLine({ items }) {
+  return (
+    <div className='mt-6 flex flex-wrap gap-x-3 gap-y-2 text-sm text-neutral-600'>
+      {items.map((item, index) => (
+        <React.Fragment key={item}>
+          <span>{item}</span>
+          {index !== items.length - 1 ? (
+            <span className='text-neutral-400'>•</span>
+          ) : null}
+        </React.Fragment>
+      ))}
     </div>
   );
 }
 
-function ProjectMediaPanel({ project }) {
-  if (project.links.embedUrl) {
-    return (
-      <div className='overflow-hidden rounded-[28px] border border-white/60 bg-white/72 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl'>
-        <div className='aspect-video w-full'>
-          <iframe
-            src={project.links.embedUrl}
-            title={`${project.title} demo video`}
-            className='h-full w-full'
-            allow='autoplay; fullscreen; picture-in-picture'
-            allowFullScreen
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (project.imageType === 'logo') {
-    return (
-      <div className='rounded-[28px] border border-white/60 bg-white/72 p-4 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl'>
-        <div className='flex min-h-[240px] items-center justify-center rounded-[22px] border border-black/8 bg-[#f3f2f2] p-6'>
-          <img
-            src={project.logo}
-            alt={`${project.title} logo`}
-            className='w-full max-w-[230px] object-contain'
-          />
-        </div>
-      </div>
-    );
-  }
+function TigoriProjectDetailPage({ project }) {
+  const metaItems = [
+    project.quickFacts.timeline,
+    project.quickFacts.users,
+    project.quickFacts.scope,
+    project.quickFacts.role,
+  ];
 
   return (
-    <div className='rounded-[28px] border border-white/60 bg-white/72 p-4 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl'>
-      <div
-        className={`flex min-h-[250px] items-end rounded-[22px] border border-black/8 p-6 text-white ${project.gradient}`}
-      >
-        <div>
-          <div className='mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/85'>
-            {project.badge}
-          </div>
-          <p className='max-w-xs text-sm leading-6 text-white/85'>
-            {project.subtitle}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ProjectDetailPage({ project }) {
-  const isResearchCase = project.kind === 'Research case';
-
-  return (
-    <section className='mx-auto max-w-6xl py-10'>
-      {/* <a
-        href='#/'
-        className='mb-8 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-sm text-neutral-700 transition hover:bg-white'
-      >
-        <ArrowLeft className='h-4 w-4' />
-        Back to projects
-      </a> */}
-
-      <div className='max-w-4xl'>
+    <section className='mx-auto max-w-4xl py-10'>
+      <div>
         <div className='mb-6 inline-flex rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-600'>
           {project.kind}
         </div>
@@ -447,9 +458,12 @@ function ProjectDetailPage({ project }) {
         <h1 className='text-4xl font-semibold tracking-tight text-neutral-950 md:text-5xl'>
           {project.title}
         </h1>
+
         <p className='mt-4 max-w-3xl text-lg leading-8 text-neutral-600'>
           {project.summary}
         </p>
+
+        <MetaLine items={metaItems} />
 
         <div className='mt-8 flex flex-wrap gap-3'>
           <a
@@ -474,53 +488,128 @@ function ProjectDetailPage({ project }) {
         </div>
       </div>
 
-      <div className='mt-10 grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch'>
-        <ProjectMediaPanel project={project} />
+      <div className='mt-8 h-px bg-black/8' />
 
-        <div className='grid gap-4 sm:grid-cols-2'>
-          <QuickFact label='Timeline' value={project.quickFacts.timeline} />
-          <QuickFact label='Users' value={project.quickFacts.users} />
-          <QuickFact label='Scope' value={project.quickFacts.scope} />
-          <QuickFact label='Role' value={project.quickFacts.role} />
-        </div>
+      <div className='mt-8 space-y-6'>
+        <DetailBlock label='Overview'>{project.details.overview}</DetailBlock>
+
+        <DetailBlock label='Problem'>{project.details.problem}</DetailBlock>
+
+        <DetailBlock label='Users'>{project.details.users}</DetailBlock>
+
+        <DetailBlock label='My role'>{project.details.role}</DetailBlock>
+
+        <DetailBlock label='Key decisions'>
+          <BulletList items={project.details.decisions} />
+        </DetailBlock>
+
+        {project.details.pilot && (
+          <DetailBlock label={project.details.pilot.title}>
+            <p className='mb-4'>{project.details.pilot.text}</p>
+            <BulletList items={project.details.pilot.signals} />
+          </DetailBlock>
+        )}
+
+        <DetailBlock label='What I learned'>
+          {project.details.learnings}
+        </DetailBlock>
+
+        {project.details.note ? (
+          <DetailBlock label='Note'>{project.details.note}</DetailBlock>
+        ) : null}
       </div>
+    </section>
+  );
+}
 
-      <div className='mt-8 grid gap-6 lg:grid-cols-2'>
-        <div className='space-y-6'>
-          <DetailBlock label='Overview'>{project.details.overview}</DetailBlock>
-          <DetailBlock label='Problem'>{project.details.problem}</DetailBlock>
+function SparkProjectDetailPage({ project }) {
+  const metaItems = [
+    project.quickFacts.timeline,
+    project.quickFacts.users,
+    project.quickFacts.scope,
+    project.quickFacts.role,
+  ];
+
+  return (
+    <section className='mx-auto max-w-4xl py-10'>
+      <div>
+        <div className='mb-6 inline-flex rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-600'>
+          {project.kind}
         </div>
 
-        <div className='space-y-6'>
-          <DetailBlock label='Users'>{project.details.users}</DetailBlock>
-          <DetailBlock label='My role'>{project.details.role}</DetailBlock>
+        <h1 className='text-4xl font-semibold tracking-tight text-neutral-950 md:text-5xl'>
+          {project.title}
+        </h1>
+
+        <p className='mt-4 max-w-3xl text-lg leading-8 text-neutral-600'>
+          {project.summary}
+        </p>
+
+        <MetaLine items={metaItems} />
+
+        <div className='mt-8 flex flex-wrap gap-3'>
+          <a
+            href='#/'
+            className='inline-flex items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:translate-y-[-1px]'
+          >
+            All projects
+            <ArrowRight className='h-4 w-4' />
+          </a>
+
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              target='_blank'
+              rel='noreferrer'
+              className='inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors duration-300 hover:bg-[#7A72B8] hover:text-white'
+            >
+              {project.links.demoLabel || 'Open interactive prototype'}
+              <ExternalLink className='h-4 w-4' />
+            </a>
+          )}
         </div>
       </div>
 
       <div className='mt-8 h-px bg-black/8' />
 
       <div className='mt-8 space-y-6'>
-        <DetailBlock
-          label={isResearchCase ? 'Research approach' : 'Key decisions'}
-        >
-          <div className='grid gap-4 md:grid-cols-2'>
-            {project.details.decisions.map((item, index) => (
-              <div
-                key={item}
-                className='flex gap-4 rounded-[22px] border border-black/6 bg-white/85 p-4'
-              >
-                <div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-xs font-semibold text-white'>
-                  {index + 1}
-                </div>
-                <p>{item}</p>
-              </div>
-            ))}
-          </div>
+        <DetailBlock label='Overview'>{project.details.overview}</DetailBlock>
+
+        <DetailBlock label='Problem'>{project.details.problem}</DetailBlock>
+
+        <DetailBlock label='Users'>{project.details.users}</DetailBlock>
+
+        <DetailBlock label='My role'>{project.details.role}</DetailBlock>
+
+        {project.details.recruiterSnapshot && (
+          <>
+            <DetailBlock label='Challenge'>
+              {project.details.recruiterSnapshot.challenge}
+            </DetailBlock>
+
+            <DetailBlock label='Outcome'>
+              {project.details.recruiterSnapshot.outcome}
+            </DetailBlock>
+
+            <DetailBlock label='What I did'>
+              <BulletList
+                items={project.details.recruiterSnapshot.contribution}
+              />
+            </DetailBlock>
+
+            <DetailBlock label='Why it matters'>
+              <BulletList items={project.details.recruiterSnapshot.relevance} />
+            </DetailBlock>
+          </>
+        )}
+
+        <DetailBlock label='Research approach'>
+          <BulletList items={project.details.decisions} />
         </DetailBlock>
 
         {project.details.themes && (
-          <DetailBlock label='Key themes'>
-            <div className='grid gap-4 md:grid-cols-2'>
+          <DetailBlock label='Top insight themes'>
+            <div className='space-y-4'>
               {project.details.themes.map((theme) => (
                 <div
                   key={theme.title}
@@ -538,17 +627,86 @@ function ProjectDetailPage({ project }) {
           </DetailBlock>
         )}
 
-        <div className='grid gap-6 lg:grid-cols-2'>
-          <DetailBlock label='What I learned'>
-            {project.details.learnings}
+        {project.details.opportunities && (
+          <DetailBlock label='How the insights were translated into the concept'>
+            <div className='space-y-4'>
+              {project.details.opportunities.map((item) => (
+                <div
+                  key={item.title}
+                  className='rounded-[22px] border border-black/6 bg-white/85 p-4'
+                >
+                  <h4 className='text-sm font-semibold text-neutral-950'>
+                    {item.title}
+                  </h4>
+                  <p className='mt-2 text-sm leading-6 text-neutral-600'>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </DetailBlock>
+        )}
 
-          {project.details.note ? (
-            <DetailBlock label='Note'>{project.details.note}</DetailBlock>
-          ) : (
-            <div />
-          )}
+        <DetailBlock label='What I learned'>
+          {project.details.learnings}
+        </DetailBlock>
+
+        {project.details.note ? (
+          <DetailBlock label='Note'>{project.details.note}</DetailBlock>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function ProjectDetailPage({ project }) {
+  if (project.slug === 'spark') {
+    return <SparkProjectDetailPage project={project} />;
+  }
+
+  if (project.slug === 'tigori') {
+    return <TigoriProjectDetailPage project={project} />;
+  }
+
+  return (
+    <section className='mx-auto max-w-4xl py-10'>
+      <div>
+        <div className='mb-6 inline-flex rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-600'>
+          {project.kind}
         </div>
+
+        <h1 className='text-4xl font-semibold tracking-tight text-neutral-950 md:text-5xl'>
+          {project.title}
+        </h1>
+
+        <p className='mt-4 max-w-3xl text-lg leading-8 text-neutral-600'>
+          {project.summary}
+        </p>
+
+        <div className='mt-8 flex flex-wrap gap-3'>
+          <a
+            href='#/'
+            className='inline-flex items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:translate-y-[-1px]'
+          >
+            All projects
+            <ArrowRight className='h-4 w-4' />
+          </a>
+        </div>
+      </div>
+
+      <div className='mt-8 h-px bg-black/8' />
+
+      <div className='mt-8 space-y-6'>
+        <DetailBlock label='Overview'>{project.details.overview}</DetailBlock>
+        <DetailBlock label='Problem'>{project.details.problem}</DetailBlock>
+        <DetailBlock label='Users'>{project.details.users}</DetailBlock>
+        <DetailBlock label='My role'>{project.details.role}</DetailBlock>
+        <DetailBlock label='Key decisions'>
+          <BulletList items={project.details.decisions} />
+        </DetailBlock>
+        <DetailBlock label='What I learned'>
+          {project.details.learnings}
+        </DetailBlock>
       </div>
     </section>
   );
@@ -607,7 +765,7 @@ export default function PMPortfolioLanding() {
         />
 
         <header className='sticky top-4 z-30 mb-10'>
-          <div className='mx-auto flex max-w-6xl justify-between rounded-full'>
+          <div className='mx-auto flex max-w-6xl items-center justify-between border-b border-black/10 py-3'>
             <a href='#/' className='text-sm font-medium text-neutral-900'>
               vmekza
             </a>
